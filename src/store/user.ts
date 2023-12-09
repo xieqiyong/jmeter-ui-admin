@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { menu, permission } from "../api/module/user";
+import { menu, permission, getUserInfo } from "../api/module/user";
 
 export const useUserStore = defineStore({
   id: 'user',
@@ -19,6 +19,10 @@ export const useUserStore = defineStore({
     async loadPermissions(){
       const { data } = await permission();
       this.permissions = data.data;
+    },
+    async loadUserInfo(){
+      const { data } = await getUserInfo();
+      this.userInfo = data.data;
     }
   },
   persist: {

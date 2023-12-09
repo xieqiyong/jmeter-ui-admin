@@ -48,6 +48,7 @@ export default {
                     leg.push(data.data.key);
                     const series = [];
                     const faileries = [];
+                    const responseFaileries = [];
                     for (const [url, values] of Object.entries(data.data.data)) {
                       const lineSeriesOption = {
                         name: url,
@@ -64,8 +65,18 @@ export default {
                       };
                       faileries.push(lineSeriesOption);
                     }
+                    for (const [url, values] of Object.entries(data.data.responseTime)) {
+                      const lineSeriesOption = {
+                        name: url,
+                        type: 'line',
+                        data: values
+                      };
+                      responseFaileries.push(lineSeriesOption);
+                    }
             
                     createMap('successTps', 'TPS成功趋势图', xAxisData, leg, series);
+                    createMap('failTps', 'TPS失败趋势图', xAxisData, leg, faileries);
+                    createMap('responseTime', '响应时间趋势图', xAxisData, leg, responseFaileries);
                 } else {
                     // 进行加载失败时的操作
                     console.log("数据加载失败");
@@ -117,8 +128,8 @@ export default {
 
     onMounted(() => {
       getRps();
-      createMap('failTps', 'TPS成功趋势图', [],[],[]);
-      createMap('successTps', 'TPS失败趋势图',[],[],[]);
+      createMap('successTps', 'TPS成功趋势图', [],[],[]);
+      createMap('failTps', 'TPS失败趋势图',[],[],[]);
       createMap('responseTime', '响应时间趋势图',[],[],[]);
     });
     setInterval(getRps,3000)

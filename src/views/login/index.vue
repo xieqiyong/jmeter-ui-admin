@@ -135,6 +135,7 @@ export default defineComponent({
               userStore.token = data.data.token
               await userStore.loadMenus()
               await userStore.loadPermissions()
+              await userStore.loadUserInfo()
               router.push('/')
             })
           } else {

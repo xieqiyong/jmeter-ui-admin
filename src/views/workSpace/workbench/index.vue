@@ -1,9 +1,31 @@
 <template>
-    <lay-notice-bar leftIcon="layui-icon-face-smile" rightIcon="layui-icon-close" 
-    text="事情总是会自动变化。顺其自然就好。所有事情都要持之以恒" mode="closeable" background="#ecf5ff"	></lay-notice-bar>
+  <lay-result v-bind:title="username" describe=""></lay-result>
 </template>
 
+<script>
+import { useUserStore } from "../../../store/user";
+
+export default {
+  
+  setup (){
+    const userInfoStore = useUserStore()
+    const username = "欢迎用户【"+userInfoStore.userInfo.username+"】";
+
+    return{
+      username
+    }
+  }
+}
+</script>
+
+
 <style scoped>
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Optional: Set height to 100% of the viewport height for full page centering */
+}
 .content {
   text-align: left;
   background: #fafafa;

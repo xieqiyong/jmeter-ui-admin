@@ -247,6 +247,7 @@ export default {
       }
       userInfoStore.loadMenus()
       userInfoStore.loadPermissions()
+      userInfoStore.loadUserInfo()
     })
 
     const changeVisible = () => {

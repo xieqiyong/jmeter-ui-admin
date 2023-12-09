@@ -255,6 +255,16 @@ export default [
         path: '/stress/pluins',
         component: () => import('../../views/stress/pluins.vue'),
         meta: { title: '插件管理', requireAuth: true },
+      },
+      {
+        path: '/stress/scene',
+        component: () => import('../../views/stress/scene.vue'),
+        meta: { title: '场景管理', requireAuth: true },
+      },
+      {
+        path: '/stress/script',
+        component: () => import('../../views/stress/script.vue'),
+        meta: { title: '脚本管理', requireAuth: true },
       }
     ]
   },
